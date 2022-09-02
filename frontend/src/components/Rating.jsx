@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Rating = ({ value, text, color }) => {
+const Rating = ({ rating, review, color }) => {
 	const starIcon = (full, half) => {
 		return (
 			<span>
 				<i
 					style={{ color }}
 					className={
-						value >= full
+						rating >= full
 							? "fas fa-star"
-							: value >= half
+							: rating >= half
 							? "fas fa-star-half-alt"
 							: "far fa-star"
 					}
@@ -26,7 +26,7 @@ const Rating = ({ value, text, color }) => {
 			{starIcon(3, 2.5)}
 			{starIcon(4, 3.5)}
 			{starIcon(5, 4.5)}
-			<span>{text && text}</span>
+			<span>{review && `${review} ${review > 1 ? "reviews" : "review"}`}</span>
 		</div>
 	);
 };
@@ -36,8 +36,8 @@ Rating.defaultProps = {
 };
 
 Rating.protoTypes = {
-	value: PropTypes.number.isRequired,
-	text: PropTypes.string.isRequired,
+	rating: PropTypes.number.isRequired,
+	review: PropTypes.number.isRequired,
 	color: PropTypes.string,
 };
 
