@@ -5,8 +5,10 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
-
+import axios from "axios";
 const App = () => {
+	axios.defaults.headers.common["Accept"] = "application/json";
+	axios.defaults.baseURL = "localhost:8000";
 	return (
 		<BrowserRouter>
 			<Header />
