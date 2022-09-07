@@ -16,17 +16,15 @@ import Rating from "../components/Rating";
 const ProductScreen = () => {
 	const { id } = useParams();
 	const [product, setProduct] = useState(null);
-	// console.log(id);
 
 	useEffect(() => {
-		const url = `api/products/${id}`;
-		console.log(url);
+		const url = `/api/products/${id}`;
 		const fetchProduct = async () => {
-			const res = await axios(url);
+			const res = await axios.get(url);
 			setProduct(res.data);
 		};
 		fetchProduct();
-	});
+	}, [id]);
 
 	if (!product) return null;
 	return (
